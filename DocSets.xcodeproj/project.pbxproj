@@ -10,6 +10,7 @@
 		1D3623260D0F684500981E51 /* DocSetsAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* DocSetsAppDelegate.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
+		25C8699015A2911C00C7436A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 25C8699215A2911C00C7436A /* Localizable.strings */; };
 		2804200B108E984D000629CD /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28042008108E984D000629CD /* RootViewController.m */; };
 		2804200C108E984D000629CD /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2804200A108E984D000629CD /* DetailViewController.m */; };
 		2892E4100DC94CBA00A64D0F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2892E40F0DC94CBA00A64D0F /* CoreGraphics.framework */; };
@@ -132,6 +133,8 @@
 		1D3623250D0F684500981E51 /* DocSetsAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DocSetsAppDelegate.m; sourceTree = "<group>"; };
 		1D6058910D05DD3D006BFB54 /* DocSets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DocSets.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		25C8699115A2911C00C7436A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		25C8699315A2912300C7436A /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		28042007108E984D000629CD /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		28042008108E984D000629CD /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		28042009108E984D000629CD /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
@@ -356,6 +359,7 @@
 			isa = PBXGroup;
 			children = (
 				7F1D42C814D1628400A85CB3 /* Info.plist */,
+				25C8699215A2911C00C7436A /* Localizable.strings */,
 				7F1D42C614D1627D00A85CB3 /* AvailableDocSets.plist */,
 				7F1D42CA14D1629100A85CB3 /* docSet.mom */,
 				7FCAE4C212B70FC500F529FF /* Images */,
@@ -643,6 +647,7 @@
 				French,
 				German,
 				en,
+				"zh-Hans",
 			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
 			projectDirPath = "";
@@ -730,6 +735,7 @@
 				7FEFBF45156D52B400C75316 /* CloudLog@2x.png in Resources */,
 				7F0BEE78156D75E4008D806F /* whitey.png in Resources */,
 				7F0BEE79156D75E4008D806F /* whitey@2x.png in Resources */,
+				25C8699015A2911C00C7436A /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -780,6 +786,19 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		25C8699215A2911C00C7436A /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				25C8699115A2911C00C7436A /* en */,
+				25C8699315A2912300C7436A /* zh-Hans */,
+			);
+			name = Localizable.strings;
+			path = Classes;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		1D6058940D05DD3E006BFB54 /* Debug */ = {
