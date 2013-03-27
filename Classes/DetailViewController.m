@@ -62,8 +62,24 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-	if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone && self.navigationController.toolbarHidden) {
-		[self.navigationController setToolbarHidden:NO animated:animated];
+	if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone ) {
+		if (!tapGestureRecognizer) {
+			tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapped:)];
+			tapGestureRecognizer.numberOfTapsRequired = 1;
+			tapGestureRecognizer.numberOfTouchesRequired = 2;
+		}
+		[webView addGestureRecognizer:tapGestureRecognizer];
+		if (self.navigationController.toolbarHidden) {
+			[self.navigationController setToolbarHidden:NO animated:animated];
+		}
+	}
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+	if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+		[self.navigationController.navigationBar setBarStyle:UIBarStyleDefault];
+		[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
+		[webView removeGestureRecognizer:tapGestureRecognizer];
 	}
 }
 
@@ -97,6 +113,11 @@
 		titleLabel.center = CGPointMake(toolbar.bounds.size.width * 0.5, toolbar.bounds.size.height * 0.5);
 		[toolbar addSubview:titleLabel];
 	} else {
+		[self.navigationController.navigationBar setBarStyle:UIBarStyleBlackTranslucent];
+		[self.navigationController.toolbar setBarStyle:UIBarStyleBlackTranslucent];
+		self.wantsFullScreenLayout = YES;
+		[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackTranslucent animated:YES];
+		isBarHidden = NO;
 		UIBarButtonItem *spaceItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
 		UIBarButtonItem *flexSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
 		spaceItem.width = 24.0;
@@ -148,6 +169,26 @@
 	[UIView setAnimationDuration:animationDuration];
 	webView.frame = CGRectMake(0, 44, self.view.bounds.size.width, self.view.bounds.size.height - 44);
 	[UIView commitAnimations];
+}
+
+- (void)tapped:(UITapGestureRecognizer *)tap {
+	if (tap.state == UIGestureRecognizerStateEnded) {
+		if (isBarHidden) {
+			[UIView animateWithDuration:0.25 animations:^{
+				[[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
+				self.navigationController.toolbar.alpha = 1.;
+				self.navigationController.navigationBar.alpha = 1.;
+			}];
+		}
+		else {
+			[UIView animateWithDuration:0.25 animations:^{
+				self.navigationController.toolbar.alpha = 0.;
+				self.navigationController.navigationBar.alpha = 0.;
+				[[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
+			}];
+		}
+		isBarHidden = !isBarHidden;
+	}
 }
 
 - (void)goBack:(id)sender

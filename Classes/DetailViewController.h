@@ -11,7 +11,7 @@
 
 @class DocSet, OutlineItem, OutlineViewController;
 
-@interface DetailViewController : UIViewController <UIPopoverControllerDelegate, UISplitViewControllerDelegate, UINavigationControllerDelegate, UIWebViewDelegate, UIAlertViewDelegate, UIActionSheetDelegate, BookmarksViewControllerDelegate> {
+@interface DetailViewController : UIViewController <UIPopoverControllerDelegate, UINavigationControllerDelegate, UIWebViewDelegate, UIAlertViewDelegate, UIActionSheetDelegate, BookmarksViewControllerDelegate> {
 
 	UIActionSheet *activeSheet;
 	UIPopoverController *outlinePopover;
@@ -28,6 +28,9 @@
 	UIBarButtonItem *bookmarksButtonItem;
 	UIBarButtonItem *actionButtonItem;
 	UILabel *titleLabel;
+	
+	UITapGestureRecognizer *tapGestureRecognizer;
+	BOOL isBarHidden;
 	
 	UIView *coverView;
 	UIWebView *webView;
